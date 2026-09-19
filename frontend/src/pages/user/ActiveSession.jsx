@@ -4,6 +4,7 @@ import { Clock, CheckCircle2, ArrowRight } from 'lucide-react';
 import { useParking } from '../../context/ParkingContext';
 import { Button } from '../../components/common/Button';
 import { QRScannerModal } from '../../components/common/QRScannerModal';
+import { formatCurrency } from '../../utils/formatters';
 
 export function ActiveSession() {
   const { activeSession, sessionCostInfo, endSession, walletBalance } = useParking();
@@ -21,37 +22,37 @@ export function ActiveSession() {
     return (
       <div className="space-y-6 py-4 w-full">
         <div className="text-center space-y-2">
-          <div className="w-14 h-14 rounded-full bg-emerald-950/60 border border-emerald-800/60 flex items-center justify-center mx-auto text-emerald-400">
+          <div className="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-600 dark:text-emerald-400">
             <CheckCircle2 className="w-7 h-7" />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold font-display text-[#FAF7F5]">
+          <h1 className="text-2xl sm:text-3xl font-bold font-display text-zinc-900 dark:text-zinc-50">
             Session Completed
           </h1>
-          <p className="text-xs sm:text-sm text-[#D1C7C9]">
+          <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">
             Barrier open. Parking fee was debited automatically.
           </p>
         </div>
 
-        <div className="p-6 sm:p-8 rounded-xl bg-[#240812] border border-[rgba(247,214,220,0.1)] space-y-3.5 font-mono text-xs shadow-sm">
-          <div className="flex justify-between py-1.5 border-b border-[rgba(247,214,220,0.06)]">
-            <span className="text-[#A8989C]">Facility</span>
-            <span className="font-bold text-[#FAF7F5]">{completedSummary.buildingName}</span>
+        <div className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#121215] border border-zinc-200 dark:border-zinc-800 space-y-3.5 font-mono text-xs shadow-card">
+          <div className="flex justify-between py-1.5 border-b border-zinc-100 dark:border-zinc-800">
+            <span className="text-zinc-500 font-semibold">Facility</span>
+            <span className="font-bold text-zinc-900 dark:text-zinc-100">{completedSummary.buildingName}</span>
           </div>
-          <div className="flex justify-between py-1.5 border-b border-[rgba(247,214,220,0.06)]">
-            <span className="text-[#A8989C]">Bay</span>
-            <span className="font-bold text-[#FAF7F5]">{completedSummary.slot}</span>
+          <div className="flex justify-between py-1.5 border-b border-zinc-100 dark:border-zinc-800">
+            <span className="text-zinc-500 font-semibold">Bay</span>
+            <span className="font-bold text-zinc-900 dark:text-zinc-100">{completedSummary.slot}</span>
           </div>
-          <div className="flex justify-between py-1.5 border-b border-[rgba(247,214,220,0.06)]">
-            <span className="text-[#A8989C]">Duration</span>
-            <span className="font-bold text-[#FAF7F5]">{completedSummary.finalDuration}</span>
+          <div className="flex justify-between py-1.5 border-b border-zinc-100 dark:border-zinc-800">
+            <span className="text-zinc-500 font-semibold">Duration</span>
+            <span className="font-bold text-zinc-900 dark:text-zinc-100">{completedSummary.finalDuration}</span>
           </div>
-          <div className="flex justify-between py-1.5 border-b border-[rgba(247,214,220,0.06)]">
-            <span className="text-[#A8989C]">Rate Model</span>
-            <span className="font-bold text-[#F7D6DC] uppercase">{completedSummary.rateType} (₹{completedSummary.ratePerHour}/hr)</span>
+          <div className="flex justify-between py-1.5 border-b border-zinc-100 dark:border-zinc-800">
+            <span className="text-zinc-500 font-semibold">Rate Model</span>
+            <span className="font-bold text-zinc-900 dark:text-zinc-100 uppercase">{completedSummary.rateType} ({formatCurrency(completedSummary.ratePerHour)}/hr)</span>
           </div>
           <div className="flex justify-between pt-3 text-base font-bold">
-            <span className="text-[#D1C7C9]">Total Paid</span>
-            <span className="text-emerald-300 font-mono">₹{completedSummary.finalCost.toFixed(2)}</span>
+            <span className="text-zinc-700 dark:text-zinc-300">Total Paid</span>
+            <span className="text-emerald-600 dark:text-emerald-400 font-mono">{formatCurrency(completedSummary.finalCost, true)}</span>
           </div>
         </div>
 
@@ -62,7 +63,7 @@ export function ActiveSession() {
             size="lg"
             className="w-full"
           >
-            Wallet (₹{walletBalance.toFixed(2)})
+            Wallet ({formatCurrency(walletBalance, true)})
           </Button>
           <Button
             onClick={() => navigate('/app/home')}
@@ -81,13 +82,13 @@ export function ActiveSession() {
   if (!activeSession) {
     return (
       <div className="text-center py-20 space-y-4 w-full">
-        <div className="w-14 h-14 rounded-xl bg-[#240812] border border-[rgba(247,214,220,0.1)] flex items-center justify-center mx-auto text-[#D1C7C9]">
+        <div className="w-14 h-14 rounded-2xl bg-zinc-100 dark:bg-[#121215] border border-zinc-200 dark:border-zinc-800 flex items-center justify-center mx-auto text-zinc-500 shadow-xs">
           <Clock className="w-7 h-7" />
         </div>
-        <h2 className="text-xl font-bold text-[#FAF7F5]">
+        <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 font-display">
           No Active Parking Session
         </h2>
-        <p className="text-xs sm:text-sm text-[#D1C7C9] max-w-sm mx-auto">
+        <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 max-w-sm mx-auto">
           Explore nearby office decks to find an open bay and park.
         </p>
         <Button
@@ -108,40 +109,40 @@ export function ActiveSession() {
   return (
     <div className="space-y-6 pb-6 w-full">
       <div className="text-center space-y-1">
-        <span className="text-xs font-mono uppercase text-[#F7D6DC] tracking-wider font-semibold">
+        <span className="text-xs font-mono uppercase text-amber-600 dark:text-amber-400 tracking-wider font-bold">
           LIVE SESSION
         </span>
-        <h1 className="text-2xl font-bold font-display text-[#FAF7F5]">
+        <h1 className="text-2xl font-bold font-display text-zinc-900 dark:text-zinc-50">
           {activeSession.buildingName}
         </h1>
-        <p className="text-xs font-mono text-[#D1C7C9]">
+        <p className="text-xs font-mono text-zinc-600 dark:text-zinc-400">
           Bay {activeSession.slot} • {activeSession.vehiclePlate}
         </p>
       </div>
 
       {/* Ticking Timer Card */}
-      <div className="p-8 sm:p-10 rounded-2xl bg-[#240812] border border-[rgba(247,214,220,0.1)] text-center space-y-6 shadow-sm">
+      <div className="p-8 sm:p-10 rounded-2xl bg-white dark:bg-[#121215] border border-zinc-200 dark:border-zinc-800 text-center space-y-6 shadow-card hover:shadow-elevated transition-all">
         <div>
-          <span className="text-xs font-mono uppercase text-[#A8989C] tracking-wider">
+          <span className="text-xs font-mono uppercase text-zinc-500 tracking-wider font-semibold">
             Elapsed Time
           </span>
-          <div className="text-5xl sm:text-6xl font-extrabold font-mono text-[#FAF7F5] tracking-tight mt-2">
+          <div className="text-5xl sm:text-6xl font-extrabold font-mono text-zinc-900 dark:text-zinc-50 tracking-tight mt-2">
             {sessionCostInfo.formattedDuration}
           </div>
-          <div className="text-xs font-mono text-[#D1C7C9] mt-2">
+          <div className="text-xs font-mono text-zinc-600 dark:text-zinc-400 mt-2 font-medium">
             {activeSession.rateType === 'fixed' ? 'Fixed Rate Locked' : 'Floating Dynamic Rate'}
           </div>
         </div>
 
-        <div className="pt-6 border-t border-[rgba(247,214,220,0.08)] flex items-center justify-between text-xs font-mono">
-          <span className="text-[#D1C7C9]">Current Accrued Cost:</span>
-          <span className="text-2xl font-bold text-[#FAF7F5]">
-            ₹{sessionCostInfo.totalCost.toFixed(2)}
+        <div className="pt-6 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-xs font-mono">
+          <span className="text-zinc-600 dark:text-zinc-400 font-semibold">Current Accrued Cost:</span>
+          <span className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 font-mono">
+            {formatCurrency(sessionCostInfo.totalCost, true)}
           </span>
         </div>
       </div>
 
-      {/* ONE Obvious Primary Action */}
+      {/* Primary Action */}
       <Button
         onClick={() => setIsScannerOpen(true)}
         variant="primary"
@@ -160,4 +161,4 @@ export function ActiveSession() {
       />
     </div>
   );
-}
+}

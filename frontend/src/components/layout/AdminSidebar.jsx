@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, Link } from 'react-router-dom';
 import {
   LayoutDashboard,
   Grid,
@@ -7,57 +7,71 @@ import {
   Sliders,
   TrendingUp,
   Settings,
-  LogOut
+  LogOut,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { useParking } from '../../context/ParkingContext';
 import { useAuth } from '../../context/AuthContext';
+import { useTheme } from '../../context/ThemeContext';
 
 export function AdminSidebar() {
   const { selectedBuilding, setSelectedBuildingId, buildings } = useParking();
   const { logout } = useAuth();
+  const { isDark, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const links = [
     { to: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { to: '/admin/parking', label: 'Parking', icon: Grid },
-    { to: '/admin/sessions', label: 'Sessions', icon: ListOrdered },
-    { to: '/admin/pricing', label: 'Pricing', icon: Sliders },
+    { to: '/admin/parking', label: 'Parking Bays', icon: Grid },
+    { to: '/admin/sessions', label: 'Live Sessions', icon: ListOrdered },
+    { to: '/admin/pricing', label: 'Rate Engine', icon: Sliders },
     { to: '/admin/earnings', label: 'Earnings', icon: TrendingUp },
     { to: '/admin/settings', label: 'Settings', icon: Settings },
   ];
 
   const handleLogout = () => {
     logout();
-    navigate('/admin/login');
+    navigate('/login');
   };
 
   return (
-    <aside className="w-56 bg-[#1B060C] border-r border-[rgba(247,214,220,0.08)] flex flex-col justify-between p-4 shrink-0">
+    <aside className="w-60 bg-white dark:bg-[#121215] border-r border-zinc-200 dark:border-zinc-800 flex flex-col justify-between p-4 shrink-0 transition-colors">
       <div className="space-y-6">
         {/* Brand */}
-        <div className="flex items-center gap-2.5 px-2">
-          <div className="w-7 h-7 rounded-md bg-[#8E2B44] flex items-center justify-center text-[#FDF2F4] font-bold text-xs">
-            P
-          </div>
-          <div>
-            <div className="text-xs font-bold tracking-tight text-[#FDF2F4] font-display">
-              PARK SMART
+        <div className="flex items-center justify-between px-2">
+          <Link to="/" className="flex items-center gap-2.5">
+            <div className="w-7 h-7 rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 flex items-center justify-center font-bold text-xs shadow-xs">
+              P
             </div>
-            <div className="text-[10px] text-[#C5A5AC]">
-              Facility Admin
+            <div>
+              <div className="text-xs font-bold tracking-tight text-zinc-900 dark:text-zinc-50 font-display">
+                PARK SMART
+              </div>
+              <div className="text-[10px] text-zinc-500 dark:text-zinc-400">
+                Renter Operations
+              </div>
             </div>
-          </div>
+          </Link>
+
+          <button
+            onClick={toggleTheme}
+            className="p-1.5 rounded-lg text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            title={isDark ? "Switch to Light mode" : "Switch to Dark mode"}
+          >
+            {isDark ? <Sun className="w-3.5 h-3.5 text-zinc-200" /> : <Moon className="w-3.5 h-3.5 text-zinc-700" />}
+          </button>
         </div>
 
         {/* Building Selector */}
         <div className="px-1">
-          <label className="text-[10px] uppercase font-mono text-[#C5A5AC] block mb-1">
-            Facility
+          <label className="text-[10px] uppercase font-mono text-zinc-500 dark:text-zinc-400 block mb-1">
+            Managed Facility
           </label>
           <select
             value={selectedBuilding.id}
             onChange={(e) => setSelectedBuildingId(e.target.value)}
-            className="w-full bg-[#120306] text-xs text-[#FDF2F4] p-2 rounded-lg border border-[rgba(247,214,220,0.1)] focus:outline-none focus:border-[#8E2B44]"
+            className="w-full bg-zinc-50 dark:bg-[#18181B] text-xs text-zinc-900 dark:text-zinc-100 p-2 rounded-lg border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:border-zinc-500"
           >
             {buildings.map((b) => (
               <option key={b.id} value={b.id}>
@@ -76,10 +90,10 @@ export function AdminSidebar() {
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) =>
-                  `flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                  `flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
                     isActive
-                      ? 'bg-[#8E2B44] text-[#FDF2F4]'
-                      : 'text-[#C5A5AC] hover:text-[#FDF2F4] hover:bg-[#240911]'
+                      ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-xs'
+                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/60'
                   }`
                 }
               >
@@ -92,10 +106,10 @@ export function AdminSidebar() {
       </div>
 
       {/* Footer Log Out */}
-      <div className="pt-4 border-t border-[rgba(247,214,220,0.08)] space-y-1">
+      <div className="pt-4 border-t border-zinc-100 dark:border-zinc-800 space-y-1">
         <button
           onClick={handleLogout}
-          className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-[#C5A5AC] hover:text-[#FDF2F4] hover:bg-[#240911] transition-colors"
+          className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
         >
           <LogOut className="w-3.5 h-3.5" />
           <span>Sign Out</span>

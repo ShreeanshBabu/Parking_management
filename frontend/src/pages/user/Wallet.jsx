@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { Plus, ArrowUpRight, ArrowDownLeft } from 'lucide-react';
 import { useParking } from '../../context/ParkingContext';
 import { Button } from '../../components/common/Button';
 import { Modal } from '../../components/common/Modal';
+import { formatCurrency } from '../../utils/formatters';
 
 export function Wallet() {
   const { walletBalance, transactions, topupWallet } = useParking();
@@ -17,22 +19,22 @@ export function Wallet() {
     <div className="space-y-6 pb-6 w-full">
       {/* Header */}
       <div>
-        <span className="text-xs font-mono uppercase text-[#F7D6DC] tracking-wider font-semibold">
+        <span className="text-xs font-mono uppercase text-zinc-500 tracking-wider font-semibold">
           Account Balance
         </span>
-        <h1 className="text-2xl sm:text-3xl font-bold font-display text-[#FAF7F5] mt-0.5">
+        <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-zinc-900 dark:text-zinc-50 mt-0.5">
           Transit Wallet
         </h1>
       </div>
 
       {/* Balance Card */}
-      <div className="p-6 sm:p-8 rounded-xl bg-[#240812] border border-[rgba(247,214,220,0.1)] space-y-5 shadow-sm">
+      <div className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#121215] border border-zinc-200 dark:border-zinc-800 space-y-5 shadow-card hover:shadow-elevated transition-all">
         <div>
-          <span className="text-xs font-mono uppercase text-[#A8989C]">
+          <span className="text-xs font-mono uppercase text-zinc-600 dark:text-zinc-400 font-medium">
             Available Funds
           </span>
-          <div className="text-4xl sm:text-5xl font-extrabold font-mono text-[#FAF7F5] mt-1.5">
-            ₹{walletBalance.toFixed(2)}
+          <div className="text-4xl sm:text-5xl font-extrabold font-mono text-zinc-900 dark:text-zinc-50 mt-1.5">
+            {formatCurrency(walletBalance, true)}
           </div>
         </div>
 
@@ -40,15 +42,17 @@ export function Wallet() {
           onClick={() => setIsTopupModalOpen(true)}
           variant="primary"
           size="lg"
+          icon={Plus}
+          iconPosition="left"
           className="w-full font-bold"
         >
-          + Add Money
+          Add Money
         </Button>
       </div>
 
       {/* Transactions */}
       <div className="space-y-3">
-        <div className="flex items-center justify-between text-xs font-mono text-[#D1C7C9]">
+        <div className="flex items-center justify-between text-xs font-mono text-zinc-500 dark:text-zinc-400">
           <span>RECENT ACTIVITY</span>
         </div>
 
@@ -56,20 +60,30 @@ export function Wallet() {
           {transactions.map((tx) => (
             <div
               key={tx.id}
-              className="p-4 rounded-xl bg-[#240812] border border-[rgba(247,214,220,0.08)] flex items-center justify-between text-xs font-mono shadow-sm"
+              className="p-4 rounded-xl bg-white dark:bg-[#121215] border border-zinc-200/80 dark:border-zinc-800 flex items-center justify-between text-xs font-mono shadow-xs hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
             >
-              <div>
-                <div className="font-bold text-[#FAF7F5]">
-                  {tx.title}
+              <div className="flex items-center gap-3">
+                <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                  tx.type === 'credit' 
+                    ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20' 
+                    : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700'
+                }`}>
+                  {tx.type === 'credit' ? <ArrowDownLeft className="w-4 h-4" /> : <ArrowUpRight className="w-4 h-4" />}
                 </div>
-                <div className="text-[11px] text-[#A8989C] mt-0.5">
-                  {tx.date} {tx.duration ? `• ${tx.duration}` : ''}
+
+                <div>
+                  <div className="font-bold text-zinc-900 dark:text-zinc-100">
+                    {tx.title}
+                  </div>
+                  <div className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
+                    {tx.date} {tx.duration ? `• ${tx.duration}` : ''}
+                  </div>
                 </div>
               </div>
 
               <div className="text-right">
-                <div className={`font-bold text-sm ${tx.type === 'credit' ? 'text-emerald-300' : 'text-[#FAF7F5]'}`}>
-                  {tx.type === 'credit' ? '+' : '-'}₹{tx.amount.toFixed(2)}
+                <div className={`font-bold text-sm ${tx.type === 'credit' ? 'text-emerald-600 dark:text-emerald-400' : 'text-zinc-900 dark:text-zinc-100'}`}>
+                  {tx.type === 'credit' ? '+' : '-'}{formatCurrency(tx.amount, true)}
                 </div>
               </div>
             </div>
@@ -90,13 +104,13 @@ export function Wallet() {
               <button
                 key={amt}
                 onClick={() => setTopupAmount(amt)}
-                className={`py-3 rounded-lg border font-mono font-bold text-sm transition-all ${
+                className={`py-3 rounded-xl border font-mono font-bold text-sm transition-colors ${
                   topupAmount === amt
-                    ? 'bg-[#B23C59] text-[#FAF7F5] border-[#B23C59]'
-                    : 'bg-[#1A050C] text-[#D1C7C9] border-[rgba(247,214,220,0.1)] hover:text-[#FAF7F5]'
+                    ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 border-transparent shadow-sm'
+                    : 'bg-zinc-100 dark:bg-[#18181B] text-zinc-700 dark:text-zinc-300 border-zinc-200 dark:border-zinc-700 hover:border-zinc-400'
                 }`}
               >
-                ₹{amt}
+                {formatCurrency(amt)}
               </button>
             ))}
           </div>
@@ -107,10 +121,10 @@ export function Wallet() {
             size="lg"
             className="w-full font-bold"
           >
-            Add ₹{topupAmount}
+            Add {formatCurrency(topupAmount)}
           </Button>
         </div>
       </Modal>
     </div>
   );
-}
+}

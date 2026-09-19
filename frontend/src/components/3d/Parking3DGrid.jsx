@@ -13,26 +13,26 @@ export function Parking3DGrid({ onSelectSlot }) {
   };
 
   return (
-    <div className="bg-[#240812] border border-[rgba(247,214,220,0.1)] rounded-xl p-6 sm:p-8 space-y-6 shadow-sm w-full">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[rgba(247,214,220,0.08)]">
+    <div className="bg-white dark:bg-[#121215] border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 sm:p-8 space-y-6 shadow-xs w-full">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-zinc-100 dark:border-zinc-800">
         <div>
-          <h3 className="text-sm font-bold text-[#FAF7F5] uppercase font-mono tracking-wider">
+          <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 uppercase font-mono tracking-wider">
             Live Parking Grid
           </h3>
-          <p className="text-xs text-[#D1C7C9] mt-0.5">
-            Click a stall to inspect vehicle telemetry or update status.
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+            Click a stall to inspect vehicle details or toggle status.
           </p>
         </div>
 
         {/* Legend */}
         <div className="flex items-center gap-5 text-xs font-mono">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-            <span className="text-[#D1C7C9]">Available</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+            <span className="text-zinc-600 dark:text-zinc-400">Available</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#B23C59]" />
-            <span className="text-[#D1C7C9]">Occupied</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-zinc-400 dark:bg-zinc-600" />
+            <span className="text-zinc-600 dark:text-zinc-400">Occupied</span>
           </div>
         </div>
       </div>
@@ -48,29 +48,29 @@ export function Parking3DGrid({ onSelectSlot }) {
               onClick={() => handleSlotClick(slot)}
               className={`p-4 rounded-xl border text-left flex flex-col justify-between h-28 transition-all ${
                 isSelected
-                  ? 'border-[#B23C59] bg-[#3B0E1E] ring-2 ring-[#B23C59]/50 shadow-sm'
+                  ? 'border-zinc-900 dark:border-zinc-100 bg-zinc-100 dark:bg-[#1C1C22] shadow-sm ring-1 ring-zinc-900 dark:ring-zinc-100'
                   : isAvailable
-                  ? 'border-[rgba(247,214,220,0.08)] bg-[#1A050C] hover:border-[rgba(247,214,220,0.25)]'
-                  : 'border-[#4B0F1E] bg-[#2E0B17] hover:border-[#6D1D32]'
+                  ? 'border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#16161C] hover:border-zinc-400'
+                  : 'border-zinc-200 dark:border-zinc-800/80 bg-zinc-50 dark:bg-[#101014] opacity-85 hover:border-zinc-400'
               }`}
             >
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono font-bold text-[#FAF7F5]">
+                <span className="text-xs font-mono font-bold text-zinc-900 dark:text-zinc-100">
                   {slot.id}
                 </span>
                 <span
                   className={`w-2.5 h-2.5 rounded-full ${
-                    isAvailable ? 'bg-emerald-400' : 'bg-[#B23C59]'
+                    isAvailable ? 'bg-emerald-500' : 'bg-zinc-400 dark:bg-zinc-600'
                   }`}
                 />
               </div>
 
-              <div className="text-xs font-mono text-[#D1C7C9] truncate">
+              <div className="text-xs font-mono text-zinc-500 dark:text-zinc-400 truncate">
                 {slot.vehiclePlate || 'Empty'}
               </div>
 
               <div className="text-[10px] font-mono uppercase font-semibold">
-                <span className={isAvailable ? 'text-emerald-300' : 'text-[#E07A94]'}>
+                <span className={isAvailable ? 'text-emerald-600 dark:text-emerald-400' : 'text-zinc-500 dark:text-zinc-400'}>
                   {slot.status}
                 </span>
               </div>
@@ -81,28 +81,28 @@ export function Parking3DGrid({ onSelectSlot }) {
 
       {/* Selected Slot Quick Inspector */}
       {selectedSlot && (
-        <div className="pt-4 border-t border-[rgba(247,214,220,0.08)] flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono">
+        <div className="pt-4 border-t border-zinc-100 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono">
           <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-            <span className="text-[#FAF7F5] font-bold text-sm">
+            <span className="text-zinc-900 dark:text-zinc-100 font-bold text-sm">
               Slot {selectedSlot.id}
             </span>
-            <span className="text-[#D1C7C9]">
-              Status: <span className="capitalize text-[#FAF7F5] font-semibold">{selectedSlot.status}</span>
+            <span className="text-zinc-500 dark:text-zinc-400">
+              Status: <span className="capitalize text-zinc-900 dark:text-zinc-100 font-semibold">{selectedSlot.status}</span>
             </span>
             {selectedSlot.vehiclePlate && (
-              <span className="text-[#D1C7C9]">
-                Vehicle: <span className="text-[#FAF7F5] font-semibold">{selectedSlot.vehiclePlate}</span>
+              <span className="text-zinc-500 dark:text-zinc-400">
+                Vehicle: <span className="text-zinc-900 dark:text-zinc-100 font-semibold">{selectedSlot.vehiclePlate}</span>
               </span>
             )}
-            <span className="text-[#D1C7C9]">
-              Rate: <span className="text-[#FAF7F5] font-semibold">₹{selectedSlot.rate || 32}/hr</span>
+            <span className="text-zinc-500 dark:text-zinc-400">
+              Rate: <span className="text-zinc-900 dark:text-zinc-100 font-semibold">?{selectedSlot.rate || 32}/hr</span>
             </span>
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={() => toggleSlotStatus(selectedSlot.id, selectedSlot.status === 'available' ? 'occupied' : 'available')}
-              className="px-4 py-2 rounded-lg bg-[#3B0E1E] hover:bg-[#4B0F1E] text-[#FAF7F5] border border-[rgba(247,214,220,0.15)] transition-colors font-medium"
+              className="px-4 py-2 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 transition-colors font-medium text-xs shadow-xs"
             >
               Toggle Status
             </button>

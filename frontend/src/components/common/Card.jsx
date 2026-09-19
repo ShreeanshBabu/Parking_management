@@ -10,17 +10,17 @@ export function Card({
   onClick,
   ...props
 }) {
-  const baseStyles = 'rounded-xl transition-all duration-150';
+  const baseStyles = 'rounded-xl transition-colors duration-150';
 
   const variants = {
-    surface: 'bg-[#1B060C] text-[#FDF2F4] border border-[rgba(247,214,220,0.08)] shadow-sm',
-    elevated: 'bg-[#240911] text-[#FDF2F4] border border-[rgba(247,214,220,0.12)] shadow-wine-subtle',
-    secondary: 'bg-[#120306] text-[#FDF2F4] border border-[rgba(247,214,220,0.06)]',
-    glass: 'tech-glass text-[#FDF2F4]',
-    accent: 'bg-[#240911] border border-[#6D1D32] shadow-wine-subtle',
+    surface: 'bg-white dark:bg-[#121215] text-zinc-900 dark:text-zinc-100 border border-zinc-200/80 dark:border-zinc-800 shadow-sm',
+    elevated: 'bg-white dark:bg-[#18181B] text-zinc-900 dark:text-zinc-100 border border-zinc-200 dark:border-zinc-800 shadow-sm',
+    secondary: 'bg-zinc-50 dark:bg-[#0D0D10] text-zinc-900 dark:text-zinc-100 border border-zinc-200/60 dark:border-zinc-800/60',
+    glass: 'bg-white/80 dark:bg-[#121215]/80 backdrop-blur-md text-zinc-900 dark:text-zinc-100 border border-zinc-200/80 dark:border-zinc-800',
+    accent: 'bg-white dark:bg-[#16161C] border border-zinc-300 dark:border-zinc-700 shadow-sm',
   };
 
-  const hoverStyles = hover ? 'hover:border-[#8E2B44]/70 hover:bg-[#20070F] cursor-pointer' : '';
+  const hoverStyles = hover ? 'hover:border-zinc-400 dark:hover:border-zinc-600 hover:bg-zinc-50/80 dark:hover:bg-[#18181F] cursor-pointer' : '';
 
   return (
     <div

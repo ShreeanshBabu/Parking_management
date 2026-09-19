@@ -28,32 +28,32 @@ export function Modal({ isOpen, onClose, title, subtitle, children, maxWidth = '
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-sm"
           />
 
           {/* Dialog Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.98, y: 10 }}
+            initial={{ opacity: 0, scale: 0.98, y: 8 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.98, y: 10 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
-            className={`relative w-full ${maxWidth} z-10 bg-[#1B060C] border border-[rgba(247,214,220,0.12)] rounded-2xl shadow-2xl p-6 overflow-hidden text-[#FDF2F4]`}
+            exit={{ opacity: 0, scale: 0.98, y: 8 }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
+            className={`relative w-full ${maxWidth} z-10 bg-white dark:bg-[#121215] border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-2xl p-6 overflow-hidden text-zinc-900 dark:text-zinc-50`}
           >
             {/* Header */}
-            <div className="flex items-start justify-between pb-4 border-b border-[rgba(247,214,220,0.08)]">
+            <div className="flex items-start justify-between pb-4 border-b border-zinc-100 dark:border-zinc-800/80">
               <div>
-                <h3 className="text-base font-bold tracking-tight text-[#FDF2F4] font-display">
+                <h3 className="text-base font-bold tracking-tight text-zinc-900 dark:text-zinc-50 font-display">
                   {title}
                 </h3>
                 {subtitle && (
-                  <p className="text-xs text-[#C5A5AC] mt-0.5">
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
                     {subtitle}
                   </p>
                 )}
               </div>
               <button
                 onClick={onClose}
-                className="p-1 rounded-lg text-[#C5A5AC] hover:text-[#FDF2F4] hover:bg-[#240911] transition-colors"
+                className="p-1.5 rounded-lg text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
                 aria-label="Close"
               >
                 <X className="w-4 h-4" />

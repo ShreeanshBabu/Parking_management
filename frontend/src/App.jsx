@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { LandingPage } from './pages/landing/LandingPage';
+import { LoginSelectionPage } from './pages/auth/LoginSelectionPage';
 import { UserLayout } from './components/layout/UserLayout';
 import { UserHome } from './pages/user/UserHome';
 import { ExploreMap } from './pages/user/ExploreMap';
@@ -9,7 +10,6 @@ import { ActiveSession } from './pages/user/ActiveSession';
 import { Wallet } from './pages/user/Wallet';
 import { Profile } from './pages/user/Profile';
 
-import { AdminLogin } from './pages/admin/AdminLogin';
 import { AdminLayout } from './components/layout/AdminLayout';
 import { AdminDashboard } from './pages/admin/AdminDashboard';
 import { AdminParking } from './pages/admin/AdminParking';
@@ -24,14 +24,14 @@ export function App() {
   return (
     <>
       <Routes>
-        {/* 1. CINEMATIC LANDING EXPERIENCE */}
+        {/* 1. PUBLIC LANDING PAGE */}
         <Route path="/" element={<LandingPage />} />
 
-        {/* 2. AUTHENTICATION */}
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/login" element={<AdminLogin />} />
+        {/* 2. PUBLIC LOGIN SELECTION PAGE */}
+        <Route path="/login" element={<LoginSelectionPage />} />
+        <Route path="/admin/login" element={<Navigate to="/login" replace />} />
 
-        {/* 3. PUBLIC USER MOBILE-FIRST APPLICATION */}
+        {/* 3. USER MOBILE APPLICATION */}
         <Route path="/app" element={<UserLayout />}>
           <Route index element={<Navigate to="/app/home" replace />} />
           <Route path="home" element={<UserHome />} />
@@ -42,7 +42,7 @@ export function App() {
           <Route path="profile" element={<Profile />} />
         </Route>
 
-        {/* 4. PROTECTED ADMIN CONTROL CENTER */}
+        {/* 4. PROTECTED RENTER / ADMIN APPLICATION */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Navigate to="/admin/dashboard" replace />} />
           <Route path="dashboard" element={<AdminDashboard />} />

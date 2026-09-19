@@ -1,72 +1,122 @@
 import React from 'react';
+import { Lock, TrendingDown, Check } from 'lucide-react';
 
 export function FixedFloatingSection() {
   return (
-    <section id="rates" className="py-32 w-full border-t border-[rgba(247,214,220,0.08)] bg-[#1A050C]">
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+    <section className="py-24 md:py-32 w-full border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-[#121215] transition-colors">
+      <div className="w-full max-w-6xl mx-auto px-6 md:px-12 space-y-16">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-20 space-y-3">
-          <div className="text-xs md:text-sm font-mono tracking-widest text-[#F7D6DC] uppercase">
-            04 / RATE MODELS
+        <div className="max-w-3xl space-y-3">
+          <div className="text-xs font-mono tracking-widest text-zinc-500 uppercase font-semibold">
+            PRICING OPTIONS
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#FAF7F5] font-display">
-            Fixed vs. Floating.
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 font-display">
+            Fixed vs. Floating Rates.
           </h2>
-          <p className="text-base sm:text-lg text-[#D1C7C9] leading-relaxed">
-            Choose predictable locked rates or take advantage of lower prices when demand is calm.
+          <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed pt-1">
+            Choose predictable locked pricing or take advantage of lower rates when demand is calm.
           </p>
         </div>
 
-        {/* 50% / 50% Balanced Rate Models */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        {/* 2 Balanced Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           
-          {/* FIXED (50%) */}
-          <div className="p-8 sm:p-10 rounded-2xl bg-[#240812] border border-[rgba(247,214,220,0.1)] space-y-6 flex flex-col justify-between">
-            <div className="space-y-4">
-              <span className="text-xs font-mono uppercase text-[#F7D6DC] tracking-wider block">
-                Option A
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-bold text-[#FAF7F5] font-display">
-                Fixed Rate
-              </h3>
-              <div className="text-3xl sm:text-4xl font-extrabold font-mono text-[#FAF7F5]">
-                ₹35<span className="text-sm font-normal text-[#D1C7C9]"> / hour</span>
+          {/* FIXED RATE */}
+          <div className="p-8 sm:p-10 rounded-2xl bg-white dark:bg-[#18181B] border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col justify-between space-y-6">
+            <div className="space-y-5">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono uppercase tracking-wider text-zinc-500 font-bold">
+                  Option 01
+                </span>
+                <div className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-zinc-100 shadow-xs">
+                  <Lock className="w-4 h-4" />
+                </div>
               </div>
-              <p className="text-sm sm:text-base text-[#D1C7C9] leading-relaxed pt-2">
-                Your hourly rate is locked at entry and never changes during your stay, regardless of peak surges or incoming traffic.
-              </p>
+
+              <div>
+                <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 font-display">
+                  Fixed Rate
+                </h3>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+                  Lock your hourly rate upon gate check-in.
+                </p>
+              </div>
+
+              <div className="text-4xl font-extrabold font-mono text-zinc-900 dark:text-zinc-50">
+                ₹35<span className="text-sm font-normal text-zinc-500"> / hour</span>
+              </div>
+
+              <ul className="space-y-3 pt-2 text-sm text-zinc-600 dark:text-zinc-300">
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                  <span>Guaranteed constant rate regardless of peak traffic surges</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                  <span>Total cost predictability for business meetings and full workdays</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                  <span>Zero surprise surge fees if you stay longer than planned</span>
+                </li>
+              </ul>
             </div>
 
-            <div className="pt-6 border-t border-[rgba(247,214,220,0.1)] text-xs font-mono text-[#A8989C]">
-              Ideal for long office days and scheduled appointments.
+            <div className="pt-4 border-t border-zinc-100 dark:border-zinc-800 text-xs font-mono text-zinc-500 dark:text-zinc-400">
+              Best for: All-day office parking & scheduled commitments
             </div>
           </div>
 
-          {/* FLOATING (50%) */}
-          <div className="p-8 sm:p-10 rounded-2xl bg-[#240812] border border-[rgba(247,214,220,0.1)] space-y-6 flex flex-col justify-between">
-            <div className="space-y-4">
-              <span className="text-xs font-mono uppercase text-[#F7D6DC] tracking-wider block">
-                Option B
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-bold text-[#FAF7F5] font-display">
-                Floating Rate
-              </h3>
-              <div className="text-3xl sm:text-4xl font-extrabold font-mono text-[#F7D6DC]">
-                ₹28–32<span className="text-sm font-normal text-[#D1C7C9]"> / hour</span>
+          {/* FLOATING RATE */}
+          <div className="p-8 sm:p-10 rounded-2xl bg-white dark:bg-[#18181B] border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col justify-between space-y-6">
+            <div className="space-y-5">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono uppercase tracking-wider text-zinc-500 font-bold">
+                  Option 02
+                </span>
+                <div className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-zinc-100 shadow-xs">
+                  <TrendingDown className="w-4 h-4" />
+                </div>
               </div>
-              <p className="text-sm sm:text-base text-[#D1C7C9] leading-relaxed pt-2">
-                Your rate adjusts dynamically according to building occupancy. When lots of stalls are open, rates drop so you pay less.
-              </p>
+
+              <div>
+                <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 font-display">
+                  Floating Rate
+                </h3>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+                  Follow live building demand and save when capacity is open.
+                </p>
+              </div>
+
+              <div className="text-4xl font-extrabold font-mono text-zinc-900 dark:text-zinc-50">
+                ₹28–₹32<span className="text-sm font-normal text-zinc-500"> / hour</span>
+              </div>
+
+              <ul className="space-y-3 pt-2 text-sm text-zinc-600 dark:text-zinc-300">
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                  <span>Dynamic yield pricing adjusting with live garage occupancy</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                  <span>Save significantly during off-peak evenings, weekends & low demand</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                  <span>Fair market rate tracking calculated per minute</span>
+                </li>
+              </ul>
             </div>
 
-            <div className="pt-6 border-t border-[rgba(247,214,220,0.1)] text-xs font-mono text-[#A8989C]">
-              Ideal for quick stops, off-peak evenings, and maximum savings.
+            <div className="pt-4 border-t border-zinc-100 dark:border-zinc-800 text-xs font-mono text-zinc-500 dark:text-zinc-400">
+              Best for: Off-peak hours, quick stops & maximum savings
             </div>
           </div>
 
         </div>
+
       </div>
     </section>
   );
-}
+}
