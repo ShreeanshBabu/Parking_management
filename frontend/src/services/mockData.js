@@ -1,0 +1,148 @@
+export const INITIAL_BUILDINGS = [
+  {
+    id: 'business-hub',
+    name: 'Business Hub Towers',
+    tagline: 'Premium Grade-A Shared Facility',
+    address: '42 Inner Ring Road, Tech Corridor',
+    totalSlots: 20,
+    availableSlots: 7,
+    baseRate: 32,
+    fixedRate: 35,
+    floatingRate: 32,
+    demandMultiplier: 1.0,
+    distance: '650 m',
+    walkingTime: '4 mins',
+    coordinates: { x: 48, y: 42, lat: 12.9716, lng: 77.5946 },
+    operatingHours: '18:00 – 08:00 Weekdays • 24/7 Weekends',
+    currentDemand: 'NORMAL',
+    amenities: ['EV Fast Charging', '24/7 Security CCTV', 'Covered Basement', 'Automated Barrier'],
+    image: 'https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=800&q=80',
+    owner: 'Nexus Property Holdings'
+  },
+  {
+    id: 'tech-park',
+    name: 'Tech Park Alpha',
+    tagline: 'High-Capacity Office Park',
+    address: '108 Silicon Boulevard, Phase 2',
+    totalSlots: 30,
+    availableSlots: 12,
+    baseRate: 28,
+    fixedRate: 30,
+    floatingRate: 28,
+    demandMultiplier: 0.95,
+    distance: '1.2 km',
+    walkingTime: '9 mins',
+    coordinates: { x: 62, y: 35, lat: 12.9810, lng: 77.6050 },
+    operatingHours: '19:00 – 08:30 Weekdays • 24/7 Weekends',
+    currentDemand: 'LOW',
+    amenities: ['EV Charging', 'Wide Bays', 'Valet Assist', 'Surveillance'],
+    image: 'https://images.unsplash.com/photo-1590674899484-d5640e854abe?auto=format&fit=crop&w=800&q=80',
+    owner: 'Brigade Tech Spaces'
+  },
+  {
+    id: 'metro-towers',
+    name: 'Metro Towers B-Wing',
+    tagline: 'Central Transit Connected',
+    address: '15 Station Road, Commercial Dist',
+    totalSlots: 25,
+    availableSlots: 4,
+    baseRate: 40,
+    fixedRate: 44,
+    floatingRate: 42,
+    demandMultiplier: 1.25,
+    distance: '1.8 km',
+    walkingTime: '14 mins',
+    coordinates: { x: 30, y: 65, lat: 12.9650, lng: 77.5850 },
+    operatingHours: '18:00 – 09:00 Weekdays • Weekend Open',
+    currentDemand: 'HIGH',
+    amenities: ['Metro Direct Link', 'EV Ultra Charger', 'Guarded Entry'],
+    image: 'https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?auto=format&fit=crop&w=800&q=80',
+    owner: 'Apex Commercial Real Estate'
+  },
+  {
+    id: 'cyber-heights',
+    name: 'Cyber Heights Complex',
+    tagline: 'Multi-Level Corporate Deck',
+    address: '77 Outer Expressway, Gate 3',
+    totalSlots: 40,
+    availableSlots: 18,
+    baseRate: 25,
+    fixedRate: 28,
+    floatingRate: 24,
+    demandMultiplier: 0.85,
+    distance: '2.4 km',
+    walkingTime: '18 mins',
+    coordinates: { x: 75, y: 70, lat: 12.9900, lng: 77.6200 },
+    operatingHours: '18:30 – 07:30 Weekdays • 24/7 Weekends',
+    currentDemand: 'LOW',
+    amenities: ['Covered Stalls', 'ANPR Cameras', 'Restrooms'],
+    image: 'https://images.unsplash.com/photo-1545179605-1296651e9d43?auto=format&fit=crop&w=800&q=80',
+    owner: 'Prestige Commercials'
+  }
+];
+
+export const INITIAL_SLOTS = [
+  { id: 'A01', level: 'B1', zone: 'A', status: 'occupied', type: 'standard', vehiclePlate: 'KA 03 EQ 4412', checkedInAt: '08:45 AM', rateType: 'fixed', rate: 35 },
+  { id: 'A02', level: 'B1', zone: 'A', status: 'occupied', type: 'ev', vehiclePlate: 'KA 01 MJ 8820', checkedInAt: '09:12 AM', rateType: 'floating', rate: 32 },
+  { id: 'A03', level: 'B1', zone: 'A', status: 'available', type: 'standard', vehiclePlate: null, checkedInAt: null, rateType: null, rate: 32 },
+  { id: 'A04', level: 'B1', zone: 'A', status: 'occupied', type: 'standard', vehiclePlate: 'MH 12 PK 1902', checkedInAt: '09:30 AM', rateType: 'fixed', rate: 35 },
+  { id: 'A05', level: 'B1', zone: 'A', status: 'available', type: 'ev', vehiclePlate: null, checkedInAt: null, rateType: null, rate: 32 },
+  { id: 'A06', level: 'B1', zone: 'A', status: 'occupied', type: 'standard', vehiclePlate: 'DL 08 CA 9931', checkedInAt: '10:05 AM', rateType: 'floating', rate: 34 },
+  { id: 'A07', level: 'B1', zone: 'A', status: 'maintenance', type: 'standard', vehiclePlate: null, checkedInAt: null, rateType: null, rate: 0 },
+  { id: 'A08', level: 'B1', zone: 'A', status: 'available', type: 'standard', vehiclePlate: null, checkedInAt: null, rateType: null, rate: 32 },
+  { id: 'A09', level: 'B1', zone: 'A', status: 'occupied', type: 'standard', vehiclePlate: 'KA 05 NP 6610', checkedInAt: '10:20 AM', rateType: 'fixed', rate: 35 },
+  { id: 'A10', level: 'B1', zone: 'A', status: 'available', type: 'ev', vehiclePlate: null, checkedInAt: null, rateType: null, rate: 32 },
+  
+  { id: 'B01', level: 'B2', zone: 'B', status: 'occupied', type: 'standard', vehiclePlate: 'KA 04 MP 3301', checkedInAt: '07:30 AM', rateType: 'fixed', rate: 35 },
+  { id: 'B02', level: 'B2', zone: 'B', status: 'available', type: 'standard', vehiclePlate: null, checkedInAt: null, rateType: null, rate: 32 },
+  { id: 'B03', level: 'B2', zone: 'B', status: 'occupied', type: 'standard', vehiclePlate: 'TS 09 BA 1109', checkedInAt: '08:15 AM', rateType: 'floating', rate: 32 },
+  { id: 'B04', level: 'B2', zone: 'B', status: 'occupied', type: 'ev', vehiclePlate: 'HR 26 DQ 8841', checkedInAt: '08:50 AM', rateType: 'fixed', rate: 35 },
+  { id: 'B05', level: 'B2', zone: 'B', status: 'available', type: 'standard', vehiclePlate: null, checkedInAt: null, rateType: null, rate: 32 },
+  { id: 'B06', level: 'B2', zone: 'B', status: 'available', type: 'standard', vehiclePlate: null, checkedInAt: null, rateType: null, rate: 32 },
+  { id: 'B07', level: 'B2', zone: 'B', status: 'occupied', type: 'standard', vehiclePlate: 'KA 51 ME 7719', checkedInAt: '09:40 AM', rateType: 'floating', rate: 33 },
+  { id: 'B08', level: 'B2', zone: 'B', status: 'occupied', type: 'standard', vehiclePlate: 'KA 01 AB 9002', checkedInAt: '09:55 AM', rateType: 'fixed', rate: 35 },
+  { id: 'B09', level: 'B2', zone: 'B', status: 'available', type: 'ev', vehiclePlate: null, checkedInAt: null, rateType: null, rate: 32 },
+  { id: 'B10', level: 'B2', zone: 'B', status: 'occupied', type: 'standard', vehiclePlate: 'MH 02 CL 4400', checkedInAt: '10:10 AM', rateType: 'floating', rate: 32 },
+];
+
+export const INITIAL_TRANSACTIONS = [
+  { id: 'tx-001', type: 'debit', title: 'Parking at Business Hub', slot: 'B-17', duration: '2h 15m', rateType: 'Fixed (₹35/hr)', amount: 78.75, date: 'Yesterday, 8:40 PM', status: 'completed' },
+  { id: 'tx-002', type: 'credit', title: 'Wallet Auto Top-Up', method: 'UPI / GPay', duration: null, rateType: null, amount: 500.00, date: '16 Sep 2026, 2:15 PM', status: 'completed' },
+  { id: 'tx-003', type: 'debit', title: 'Parking at Tech Park Alpha', slot: 'A-04', duration: '1h 45m', rateType: 'Floating (₹28/hr)', amount: 49.00, date: '14 Sep 2026, 9:20 PM', status: 'completed' },
+  { id: 'tx-004', type: 'debit', title: 'Parking at Metro Towers', slot: 'M-02', duration: '3h 10m', rateType: 'Fixed (₹44/hr)', amount: 139.33, date: '11 Sep 2026, 7:10 PM', status: 'completed' },
+  { id: 'tx-005', type: 'credit', title: 'Welcome Bonus Credit', method: 'Promo Code WELCOME50', duration: null, rateType: null, amount: 50.00, date: '10 Sep 2026, 11:00 AM', status: 'completed' }
+];
+
+export const INITIAL_ADMIN_SESSIONS = [
+  { id: 'SES-9421', user: 'Surya M.', vehiclePlate: 'KA 01 MJ 7291', building: 'Business Hub', slot: 'B-17', checkIn: '10:15 AM', durationMinutes: 42, rateType: 'fixed', currentRate: 35, accruedAmount: 24.50, status: 'active' },
+  { id: 'SES-9420', user: 'Aditi Sharma', vehiclePlate: 'KA 03 EQ 4412', building: 'Business Hub', slot: 'A-01', checkIn: '08:45 AM', durationMinutes: 132, rateType: 'fixed', currentRate: 35, accruedAmount: 77.00, status: 'active' },
+  { id: 'SES-9419', user: 'Vikram Mehta', vehiclePlate: 'KA 01 MJ 8820', building: 'Business Hub', slot: 'A-02', checkIn: '09:12 AM', durationMinutes: 105, rateType: 'floating', currentRate: 32, accruedAmount: 56.00, status: 'active' },
+  { id: 'SES-9418', user: 'Rohan Gupta', vehiclePlate: 'MH 12 PK 1902', building: 'Business Hub', slot: 'A-04', checkIn: '09:30 AM', durationMinutes: 87, rateType: 'fixed', currentRate: 35, accruedAmount: 50.75, status: 'active' },
+  { id: 'SES-9417', user: 'Priya Nair', vehiclePlate: 'DL 08 CA 9931', building: 'Business Hub', slot: 'A-06', checkIn: '10:05 AM', durationMinutes: 52, rateType: 'floating', currentRate: 34, accruedAmount: 29.46, status: 'active' },
+  { id: 'SES-9416', user: 'Ananya Roy', vehiclePlate: 'KA 04 MP 3301', building: 'Business Hub', slot: 'B-01', checkIn: '07:30 AM', durationMinutes: 207, rateType: 'fixed', currentRate: 35, accruedAmount: 120.75, status: 'active' },
+  { id: 'SES-9415', user: 'Karthik S.', vehiclePlate: 'TS 09 BA 1109', building: 'Business Hub', slot: 'B-03', checkIn: '08:15 AM', durationMinutes: 162, rateType: 'floating', currentRate: 32, accruedAmount: 86.40, status: 'active' },
+  { id: 'SES-9414', user: 'Deepak V.', vehiclePlate: 'HR 26 DQ 8841', building: 'Business Hub', slot: 'B-04', checkIn: '08:50 AM', durationMinutes: 127, rateType: 'fixed', currentRate: 35, accruedAmount: 74.08, status: 'active' },
+  { id: 'SES-9410', user: 'Sanjay Patel', vehiclePlate: 'GJ 01 XX 3030', building: 'Business Hub', slot: 'A-08', checkIn: '06:30 AM', durationMinutes: 180, rateType: 'floating', currentRate: 30, accruedAmount: 90.00, status: 'completed' },
+  { id: 'SES-9409', user: 'Meera Iyer', vehiclePlate: 'TN 07 JJ 1212', building: 'Business Hub', slot: 'B-05', checkIn: '06:00 AM', durationMinutes: 210, rateType: 'fixed', currentRate: 35, accruedAmount: 122.50, status: 'completed' },
+];
+
+export const HOURLY_REVENUE_DATA = [
+  { hour: '00:00', revenue: 240, occupancy: 15, floatingRate: 24 },
+  { hour: '03:00', revenue: 180, occupancy: 10, floatingRate: 22 },
+  { hour: '06:00', revenue: 420, occupancy: 35, floatingRate: 28 },
+  { hour: '09:00', revenue: 1280, occupancy: 85, floatingRate: 38 },
+  { hour: '12:00', revenue: 1650, occupancy: 90, floatingRate: 42 },
+  { hour: '15:00', revenue: 1420, occupancy: 80, floatingRate: 36 },
+  { hour: '18:00', revenue: 1980, occupancy: 95, floatingRate: 45 },
+  { hour: '21:00', revenue: 1250, occupancy: 70, floatingRate: 32 },
+];
+
+export const WEEKLY_EARNINGS_DATA = [
+  { day: 'Mon', revenue: 7420, occupancy: 68, sessions: 64 },
+  { day: 'Tue', revenue: 8150, occupancy: 74, sessions: 71 },
+  { day: 'Wed', revenue: 8900, occupancy: 82, sessions: 79 },
+  { day: 'Thu', revenue: 8420, occupancy: 78, sessions: 73 },
+  { day: 'Fri', revenue: 9850, occupancy: 92, sessions: 88 },
+  { day: 'Sat', revenue: 11200, occupancy: 96, sessions: 104 },
+  { day: 'Sun', revenue: 10400, occupancy: 88, sessions: 95 },
+];

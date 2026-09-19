@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-main: #1A050C;
+    --bg-secondary: #240812;
+    --bg-surface: #2E0B17;
+    --bg-elevated: #3B0E1E;
+    --bg-card: #270914;
+    --text-primary: #FAF7F5;
+    --text-secondary: #D1C7C9;
+    --text-muted: #A8989C;
+    --border-color: rgba(247, 214, 220, 0.12);
+    --border-subtle: rgba(247, 214, 220, 0.06);
+    --wine-main: #4B0F1E;
+    --wine-secondary: #6D1D32;
+    --accent-primary: #B23C59;
+    --accent-hover: #CC5671;
+    --accent-light: #F7D6DC;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: #4B0F1E;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6D1D32;
+}
+
+/* Subtle Grid Texture */
+.bg-tech-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(247, 214, 220, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(247, 214, 220, 0.03) 1px, transparent 1px);
+}
+
+/* Professional Edge-to-Edge Glass */
+.navbar-glass {
+  background: rgba(26, 5, 12, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(247, 214, 220, 0.08);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
